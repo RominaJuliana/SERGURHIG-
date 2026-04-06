@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SERGURIGH – Servicio Integral de Seguridad e Higiene</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --teal: #1e8a9a;
+      --teal-dark: #136070;
+      --navy: #0b2d36;
+      --gold: #d4a843;
+      --gold-light: #e8c06a;
+      --cream: #f2ede6;
+      --white: #ffffff;
+      --gray: #9ab4bc;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy);
+      color: var(--cream);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ═══════════════════════════════
+       HERO / FONDO
+    ═══════════════════════════════ */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 2rem 6rem;
+      overflow: hidden;
+    }
+
+    /* imagen de fondo */
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      background-image: url('fondo.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    /* overlay oscuro sobre la imagen */
+    .hero-bg-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(11,45,54,0.78) 0%,
+        rgba(11,45,54,0.65) 40%,
+        rgba(11,45,54,0.90) 75%,
+        rgba(11,45,54,1.00) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-logo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(212,168,67,0.6);
+      box-shadow: 0 0 0 8px rgba(30,138,154,0.15), 0 0 60px rgba(30,138,154,0.3);
+      margin-bottom: 1.8rem;
+      opacity: 0;
+      animation: fadeDown .7s .1s forwards;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .85rem;
+      font-weight: 400;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeDown .7s .25s forwards;
+    }
+
+    .hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(4rem, 12vw, 8rem);
+      font-weight: 900;
+      line-height: .9;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      color: var(--white);
+      opacity: 0;
+      animation: fadeDown .7s .4s forwards;
+    }
+    .hero-title span { color: var(--teal); }
+
+    .hero-subtitle {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      font-weight: 300;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: .5rem;
+      opacity: 0;
+      animation: fadeDown .7s .55s forwards;
+    }
+
+    .hero-desc {
+      max-width: 580px;
+      margin: 1.8rem auto 0;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      font-weight: 300;
+      color: rgba(242,237,230,0.85);
+      opacity: 0;
+      animation: fadeDown .7s .7s forwards;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
+      opacity: 0;
+      animation: fadeDown .7s .85s forwards;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--navy);
+      padding: .85rem 2.2rem;
+      border-radius: 3rem;
+      font-size: .95rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: all .25s;
+      box-shadow: 0 4px 20px rgba(212,168,67,.4);
+    }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(212,168,67,.5); }
+    .btn-outline {
+      border: 2px solid rgba(30,138,154,.7);
+      color: var(--teal);
+      padding: .85rem 2.2rem;
+      border-radius: 3rem;
+      font-size: .95rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: all .25s;
+    }
+    .btn-outline:hover { background: rgba(30,138,154,.1); transform: translateY(-2px); border-color: var(--teal); }
+
+    /* scroll flecha */
+    .scroll-arrow {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .3rem;
+      color: var(--gray);
+      font-size: .7rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      opacity: 0;
+      animation: fadeDown .7s 1.1s forwards;
+    }
+    .scroll-arrow svg { animation: bounce 1.8s infinite; }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+    /* ═══════════════════════════════
+       TABS NAV
+    ═══════════════════════════════ */
+    .tabs-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(11,45,54,0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(30,138,154,0.2);
+    }
+    .tabs-nav {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .tabs-nav::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+      flex-shrink: 0;
+      background: none;
+      border: none;
+      color: var(--gray);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 1.1rem 1.6rem;
+      cursor: pointer;
+      position: relative;
+      transition: color .25s;
+      white-space: nowrap;
+    }
+    .tab-btn::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      right: 50%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--gold));
+      border-radius: 2px 2px 0 0;
+      transition: left .25s, right .25s;
+    }
+    .tab-btn:hover { color: var(--cream); }
+    .tab-btn.active { color: var(--white); }
+    .tab-btn.active::after { left: 12px; right: 12px; }
+
+    /* ═══════════════════════════════
+       PANELS
+    ═══════════════════════════════ */
+    .panels-container { max-width: 1000px; margin: 0 auto; padding: 0 2rem 5rem; }
+
+    .panel { display: none; padding-top: 4rem; }
+    .panel.active { display: block; animation: panelIn .4s ease; }
+    @keyframes panelIn { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+
+    /* section header */
+    .panel-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .5rem;
+    }
+    .panel-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .panel-title span { color: var(--teal); }
+    .gold-line {
+      width: 55px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--gold));
+      border-radius: 2px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── QUIÉNES SOMOS ── */
+    .quienes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .photo-col { position: relative; }
+    .profile-photo {
+      width: 100%;
+      border-radius: 1.5rem;
+      object-fit: cover;
+      border: 2px solid rgba(30,138,154,.3);
+      box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 40px rgba(30,138,154,.12);
+      display: block;
+    }
+    .photo-badge {
+      position: absolute;
+      bottom: -1rem;
+      right: -1rem;
+      background: var(--gold);
+      color: var(--navy);
+      border-radius: .9rem;
+      padding: .65rem 1.1rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 16px rgba(212,168,67,.4);
+    }
+    .info-col { display: flex; flex-direction: column; gap: 1.5rem; }
+    .bio-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(30,138,154,.2);
+      border-radius: 1.2rem;
+      padding: 1.8rem;
+    }
+    .bio-card p { font-size: .97rem; line-height: 1.8; color: var(--cream); margin-bottom: .8rem; }
+    .bio-card p:last-child { margin: 0; }
+
+    .block-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .7rem;
+    }
+    .pills { display: flex; flex-wrap: wrap; gap: .45rem; }
+    .pill {
+      background: rgba(30,138,154,.14);
+      border: 1px solid rgba(30,138,154,.28);
+      border-radius: 2rem;
+      padding: .3rem .85rem;
+      font-size: .82rem;
+      color: var(--cream);
+    }
+    .mats { display: flex; gap: .8rem; flex-wrap: wrap; }
+    .mat {
+      background: rgba(212,168,67,.1);
+      border: 1px solid rgba(212,168,67,.3);
+      border-radius: .6rem;
+      padding: .38rem .8rem;
+      font-size: .82rem;
+      color: var(--gold-light);
+      font-weight: 500;
+    }
+
+    @media(max-width:680px){ .quienes-grid{grid-template-columns:1fr} .photo-badge{right:.5rem;bottom:.5rem} }
+
+    /* ── MISIÓN/VISIÓN ── */
+    .mv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+    }
+    .mv-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(30,138,154,.2);
+      border-radius: 1.4rem;
+      padding: 2.2rem;
+      transition: border-color .25s, transform .25s;
+    }
+    .mv-card:hover { border-color: var(--teal); transform: translateY(-4px); }
+    .mv-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+    .mv-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: .85rem;
+      letter-spacing: .05em;
+    }
+    .mv-card p { font-size: .94rem; line-height: 1.8; color: var(--gray); margin-bottom: .7rem; }
+    .mv-card p:last-child { margin: 0; }
+    @media(max-width:600px){ .mv-grid{grid-template-columns:1fr} }
+
+    /* ── SERVICIOS ── */
+    .serv-filter { display: flex; gap: .6rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .sf-btn {
+      background: rgba(255,255,255,.05);
+      border: 1.5px solid rgba(30,138,154,.2);
+      color: var(--gray);
+      border-radius: 2rem;
+      padding: .45rem 1.1rem;
+      font-size: .82rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all .2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .sf-btn:hover, .sf-btn.on { background: var(--teal); border-color: var(--teal); color: var(--white); }
+
+    .serv-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 1.4rem;
+    }
+    .serv-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(30,138,154,.18);
+      border-radius: 1.3rem;
+      padding: 1.8rem;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+    }
+    .serv-card:hover { transform: translateY(-5px); border-color: var(--teal); box-shadow: 0 10px 35px rgba(30,138,154,.18); }
+    .serv-card.hide { display: none; }
+    .s-icon {
+      font-size: 1.9rem;
+      width: 50px; height: 50px;
+      background: rgba(30,138,154,.14);
+      border-radius: 11px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: .9rem;
+    }
+    .serv-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: .5rem;
+      letter-spacing: .04em;
+    }
+    .serv-card p { font-size: .87rem; line-height: 1.7; color: var(--gray); }
+    .s-tag {
+      display: inline-block;
+      background: rgba(212,168,67,.12);
+      border: 1px solid rgba(212,168,67,.25);
+      border-radius: 1rem;
+      padding: .18rem .65rem;
+      font-size: .72rem;
+      color: var(--gold-light);
+      margin-top: .75rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    /* ── CONTACTO ── */
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+    .cinfo { display: flex; flex-direction: column; gap: 1.2rem; }
+    .citem {
+      display: flex;
+      align-items: flex-start;
+      gap: .9rem;
+      padding: 1.1rem;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(30,138,154,.15);
+      border-radius: 1rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color .2s, transform .2s;
+    }
+    .citem:hover { border-color: var(--teal); transform: translateX(4px); }
+    .c-ico {
+      font-size: 1.25rem;
+      min-width: 40px; height: 40px;
+      background: rgba(30,138,154,.15);
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .c-body strong {
+      display: block;
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .15rem;
+    }
+    .c-body span { font-size: .92rem; color: var(--cream); }
+
+    .social-row { display: flex; gap: .7rem; flex-wrap: wrap; margin-top: .3rem; }
+    .soc {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .5rem 1rem;
+      border-radius: 2rem;
+      font-size: .8rem;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1.5px solid;
+      transition: all .2s;
+    }
+    .soc.wa{border-color:#25D366;color:#25D366}.soc.wa:hover{background:#25D366;color:#fff}
+    .soc.fb{border-color:#1877F2;color:#1877F2}.soc.fb:hover{background:#1877F2;color:#fff}
+    .soc.ig{border-color:#E1306C;color:#E1306C}.soc.ig:hover{background:#E1306C;color:#fff}
+    .soc.li{border-color:#0A66C2;color:#0A66C2}.soc.li:hover{background:#0A66C2;color:#fff}
+
+    /* FORM */
+    .cform { display: flex; flex-direction: column; gap: 1rem; }
+    .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .fg { display: flex; flex-direction: column; gap: .35rem; }
+    .fg label { font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
+    .fg input, .fg textarea, .fg select {
+      background: rgba(255,255,255,.05);
+      border: 1.5px solid rgba(30,138,154,.22);
+      border-radius: .7rem;
+      padding: .78rem 1rem;
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .92rem;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      resize: none;
+    }
+    .fg input:focus, .fg textarea:focus, .fg select:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(30,138,154,.14);
+    }
+    .fg select option { background: var(--navy); }
+    .fg input::placeholder, .fg textarea::placeholder { color: rgba(154,180,188,.5); }
+
+    .submit-btn {
+      background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+      color: var(--white);
+      border: none;
+      border-radius: 2.5rem;
+      padding: 1rem 2.2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-family: 'Barlow Condensed', sans-serif;
+      transition: all .25s;
+      box-shadow: 0 4px 20px rgba(30,138,154,.35);
+    }
+    .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(30,138,154,.45); }
+
+    .success-msg {
+      display: none;
+      background: rgba(30,138,154,.12);
+      border: 1px solid rgba(30,138,154,.35);
+      border-radius: .9rem;
+      padding: 1.1rem 1.4rem;
+      font-size: .93rem;
+      color: var(--cream);
+      text-align: center;
+    }
+
+    @media(max-width:660px){ .contact-wrap{grid-template-columns:1fr;gap:2.5rem} .frow{grid-template-columns:1fr} }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(30,138,154,.12);
+      padding: 1.8rem 2rem;
+      text-align: center;
+      font-size: .82rem;
+      color: var(--gray);
+    }
+    footer a { color: var(--teal); text-decoration: none; }
+    footer a:hover { color: var(--gold); }
+
+    /* FLOATING WA */
+    .wa-float {
+      position: fixed;
+      bottom: 1.8rem;
+      right: 1.8rem;
+      z-index: 200;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: #25D366;
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      text-decoration: none;
+      box-shadow: 0 4px 18px rgba(37,211,102,.5);
+      animation: waPulse 2.8s infinite;
+      transition: transform .2s;
+    }
+    .wa-float:hover { transform: scale(1.1); }
+    @keyframes waPulse {
+      0%,100%{ box-shadow: 0 4px 18px rgba(37,211,102,.5); }
+      50%{ box-shadow: 0 4px 28px rgba(37,211,102,.75), 0 0 0 7px rgba(37,211,102,.12); }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero-section" id="inicio">
+  <div class="hero-bg-img"></div>
+  <div class="hero-content">
+    <img src="logo.jpg" alt="SERGURIGH" class="hero-logo"/>
+    <p class="hero-eyebrow">Villa Paranacito, Entre Ríos · Disponibilidad nacional</p>
+    <h1 class="hero-title">SERGU<span>RIGH</span></h1>
+    <p class="hero-subtitle">Servicio Integral de Seguridad e Higiene</p>
+    <p class="hero-desc">Acompañamos a las organizaciones en la construcción de entornos de trabajo seguros, saludables y eficientes. Prevención, gestión de riesgos y cumplimiento normativo.</p>
+    <div class="hero-cta">
+      <a href="#" class="btn-gold" onclick="openTab('servicios');return false;">🛡️ Ver Servicios</a>
+      <a href="#" class="btn-outline" onclick="openTab('contacto');return false;">📩 Contactar</a>
+    </div>
+  </div>
+  <div class="scroll-arrow" onclick="document.querySelector('.tabs-wrapper').scrollIntoView({behavior:'smooth'})">
+    <span>ver más</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</section>
+
+<!-- ══════════════ TABS ══════════════ -->
+<div class="tabs-wrapper">
+  <nav class="tabs-nav">
+    <button class="tab-btn active" onclick="openTab('quienes')">Quiénes Somos</button>
+    <button class="tab-btn" onclick="openTab('misionvision')">Misión &amp; Visión</button>
+    <button class="tab-btn" onclick="openTab('servicios')">Servicios</button>
+    <button class="tab-btn" onclick="openTab('contacto')">Contacto</button>
+  </nav>
+</div>
+
+<!-- ══════════════ PANELS ══════════════ -->
+<div class="panels-container">
+
+  <!-- ── QUIÉNES SOMOS ── -->
+  <div class="panel active" id="panel-quienes">
+    <p class="panel-label">La empresa</p>
+    <h2 class="panel-title">¿Qué es <span>Sergurigh?</span></h2>
+    <div class="gold-line"></div>
+
+    <div class="quienes-grid">
+      <div class="photo-col">
+        <img src="romina.png" alt="Romina Calvo – Lic. Higiene y Seguridad" class="profile-photo"/>
+        <div class="photo-badge">Lic. Higiene &amp; Seguridad</div>
+      </div>
+      <div class="info-col">
+        <div class="bio-card">
+          <p><strong>Sergurigh</strong> es una empresa de servicios integrales en Higiene y Seguridad Laboral orientada a distintos rubros e industrias, con el objetivo de acompañar a las organizaciones en la construcción de entornos de trabajo seguros, saludables y eficientes.</p>
+          <p>Nuestro enfoque no se limita al cumplimiento normativo, sino que busca la <strong>mejora continua</strong> de los sistemas de prevención, promoviendo una cultura de seguridad sólida, sostenible y adaptada a las exigencias actuales del mundo laboral.</p>
+          <p>Liderada por <strong>Romina Juliana Calvo</strong>, Técnica Universitaria en Higiene y Seguridad (UTN) con matrícula habilitada en Buenos Aires y Entre Ríos, y actualmente finalizando la Licenciatura en la misma disciplina.</p>
+        </div>
+
+        <div>
+          <p class="block-title">Aptitudes clave</p>
+          <div class="pills">
+            <span class="pill">Gestión de SST</span>
+            <span class="pill">Evaluación de riesgos</span>
+            <span class="pill">Planes de emergencia</span>
+            <span class="pill">Auditorías</span>
+            <span class="pill">Power BI</span>
+            <span class="pill">SAP</span>
+            <span class="pill">Capacitación laboral</span>
+            <span class="pill">Gestión de proyectos</span>
+            <span class="pill">Inteligencia Artificial aplicada</span>
+          </div>
+        </div>
+
+        <div>
+          <p class="block-title">Capacitaciones acreditadas (SRT / UTN)</p>
+          <div class="pills">
+            <span class="pill">Trabajo en Altura – Res. 63/2023</span>
+            <span class="pill">Ruido Laboral e Hipoacusia</span>
+            <span class="pill">Contaminantes Químicos</span>
+            <span class="pill">Primeros Auxilios</span>
+            <span class="pill">Prevención Trabajo Rural</span>
+            <span class="pill">SGA – Clasificación Química</span>
+            <span class="pill">Protección contra Incendio</span>
+            <span class="pill">Power BI · Coursera</span>
+          </div>
+        </div>
+
+        <div>
+          <p class="block-title">Matrículas habilitadas</p>
+          <div class="mats">
+            <span class="mat">Buenos Aires · THS 008932</span>
+            <span class="mat">Entre Ríos · TH 0076</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MISIÓN Y VISIÓN ── -->
+  <div class="panel" id="panel-misionvision">
+    <p class="panel-label">Identidad organizacional</p>
+    <h2 class="panel-title">Misión <span>&amp;</span> Visión</h2>
+    <div class="gold-line"></div>
+    <div class="mv-grid">
+      <div class="mv-card">
+        <div class="mv-icon">🧭</div>
+        <h3>Misión</h3>
+        <p>Implementar normas de Higiene y Seguridad en los distintos sectores industriales, promoviendo la prevención de riesgos laborales y la protección de la salud de los trabajadores, mediante servicios técnicos, auditorías, capacitación y asesoramiento profesional.</p>
+        <p>Acompañamos a las empresas en la mejora continua de sus procesos, incorporando herramientas tecnológicas que optimizan la gestión de la seguridad laboral y la toma de decisiones.</p>
+      </div>
+      <div class="mv-card">
+        <div class="mv-icon">🎯</div>
+        <h3>Visión</h3>
+        <p>Ser una empresa referente en el área de Higiene y Seguridad, reconocida por implementar sistemas de gestión modernos, eficientes y digitalizados, integrando nuevas tecnologías que permitan elevar los estándares de prevención, control y salud ocupacional en las organizaciones.</p>
+      </div>
+    </div>
+
+    <!-- Diferencial debajo -->
+    <div style="margin-top:3rem">
+      <p class="panel-label">Nuestro valor</p>
+      <h2 class="panel-title" style="font-size:2rem">Nuestro <span>Diferencial</span></h2>
+      <div class="gold-line"></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.2rem;margin-top:1rem">
+        <div style="padding:1.4rem;background:rgba(255,255,255,.04);border-left:3px solid var(--teal);border-radius:0 .8rem .8rem 0">
+          <strong style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;text-transform:uppercase;color:var(--white);letter-spacing:.05em;display:block;margin-bottom:.4rem">Profesionalismo matriculado</strong>
+          <p style="font-size:.86rem;color:var(--gray);line-height:1.6">Matrícula habilitada en Buenos Aires y Entre Ríos. Formación UTN con actualización permanente.</p>
+        </div>
+        <div style="padding:1.4rem;background:rgba(255,255,255,.04);border-left:3px solid var(--teal);border-radius:0 .8rem .8rem 0">
+          <strong style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;text-transform:uppercase;color:var(--white);letter-spacing:.05em;display:block;margin-bottom:.4rem">Tecnología aplicada</strong>
+          <p style="font-size:.86rem;color:var(--gray);line-height:1.6">Power BI, SAP y herramientas digitales al servicio de la seguridad. Datos concretos para decisiones concretas.</p>
+        </div>
+        <div style="padding:1.4rem;background:rgba(255,255,255,.04);border-left:3px solid var(--teal);border-radius:0 .8rem .8rem 0">
+          <strong style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;text-transform:uppercase;color:var(--white);letter-spacing:.05em;display:block;margin-bottom:.4rem">Atención personalizada</strong>
+          <p style="font-size:.86rem;color:var(--gray);line-height:1.6">Cada empresa es única. Soluciones a medida, comunicación ágil y plazos concretos.</p>
+        </div>
+        <div style="padding:1.4rem;background:rgba(255,255,255,.04);border-left:3px solid var(--teal);border-radius:0 .8rem .8rem 0">
+          <strong style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;text-transform:uppercase;color:var(--white);letter-spacing:.05em;display:block;margin-bottom:.4rem">Cultura preventiva</strong>
+          <p style="font-size:.86rem;color:var(--gray);line-height:1.6">No solo cumplimos: educamos y acompañamos en la construcción de una cultura de seguridad sostenible.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SERVICIOS ── -->
+  <div class="panel" id="panel-servicios">
+    <p class="panel-label">Lo que ofrecemos</p>
+    <h2 class="panel-title">Servicios <span>Integrales</span></h2>
+    <div class="gold-line"></div>
+
+    <div class="serv-filter">
+      <button class="sf-btn on" onclick="filterServ('all',this)">Todos</button>
+      <button class="sf-btn" onclick="filterServ('hysl',this)">Higiene &amp; Seguridad</button>
+      <button class="sf-btn" onclick="filterServ('cap',this)">Capacitaciones</button>
+      <button class="sf-btn" onclick="filterServ('audit',this)">Auditorías</button>
+      <button class="sf-btn" onclick="filterServ('tech',this)">Tecnología &amp; Datos</button>
+    </div>
+
+    <div class="serv-grid">
+
+      <div class="serv-card" data-c="hysl">
+        <div class="s-icon">🏢</div>
+        <h3>Asesoramiento a Empresas</h3>
+        <p>Servicio de HySL externo. Acompañamiento permanente para el cumplimiento de la Ley 19.587, decretos reglamentarios y normativas específicas por actividad.</p>
+        <span class="s-tag">HySL</span>
+      </div>
+
+      <div class="serv-card" data-c="hysl">
+        <div class="s-icon">📋</div>
+        <h3>Documentación Técnica</h3>
+        <p>Programas de seguridad, reglamentos internos, procedimientos, matrices de riesgo, legajos técnicos y toda la documentación exigida por normativa vigente.</p>
+        <span class="s-tag">HySL</span>
+      </div>
+
+      <div class="serv-card" data-c="hysl">
+        <div class="s-icon">⚕️</div>
+        <h3>Salud y Seguridad (SST)</h3>
+        <p>Gestión integral del sistema SST: identificación de peligros, evaluación y control de riesgos, indicadores de desempeño y construcción de cultura preventiva organizacional.</p>
+        <span class="s-tag">HySL</span>
+      </div>
+
+      <div class="serv-card" data-c="hysl">
+        <div class="s-icon">🚨</div>
+        <h3>Planes de Emergencia</h3>
+        <p>Diseño e implementación de planes de evacuación, brigadas de emergencia, simulacros y señalización. Respuesta estructurada ante incidentes y siniestros.</p>
+        <span class="s-tag">HySL</span>
+      </div>
+
+      <div class="serv-card" data-c="hysl">
+        <div class="s-icon">🤝</div>
+        <h3>Tercerización HySL</h3>
+        <p>Responsable de Higiene y Seguridad externo para PyMEs, talleres, comercios e industrias que requieren cumplimiento normativo sin necesidad de personal propio.</p>
+        <span class="s-tag">HySL</span>
+      </div>
+
+      <div class="serv-card" data-c="cap">
+        <div class="s-icon">🎓</div>
+        <h3>Capacitaciones Generales</h3>
+        <p>Formación en seguridad e higiene para empleados y mandos medios: uso correcto de EPP, manejo de emergencias, evacuación, primeros auxilios y prevención general.</p>
+        <span class="s-tag">Capacitaciones</span>
+      </div>
+
+      <div class="serv-card" data-c="cap">
+        <div class="s-icon">🔥</div>
+        <h3>Protección contra Incendio</h3>
+        <p>Uso de extintores, detección de focos de incendio, evacuación segura y formación de brigadas contra incendios. Cumplimiento de la normativa vigente.</p>
+        <span class="s-tag">Capacitaciones</span>
+      </div>
+
+      <div class="serv-card" data-c="cap">
+        <div class="s-icon">⛑️</div>
+        <h3>Trabajo en Altura</h3>
+        <p>Capacitación específica para tareas en altura conforme a la Resolución SRT 63/2023: elementos de protección, técnicas seguras y prevención de caídas.</p>
+        <span class="s-tag">Capacitaciones</span>
+      </div>
+
+      <div class="serv-card" data-c="cap">
+        <div class="s-icon">🧪</div>
+        <h3>Contaminantes Químicos / SGA</h3>
+        <p>Identificación y manejo seguro de sustancias químicas. Sistema Globalmente Armonizado de clasificación y etiquetado de productos químicos.</p>
+        <span class="s-tag">Capacitaciones</span>
+      </div>
+
+      <div class="serv-card" data-c="audit">
+        <div class="s-icon">🔍</div>
+        <h3>Auditorías Internas</h3>
+        <p>Evaluación sistemática del sistema de gestión de seguridad. Verificación de procedimientos, registros y cumplimiento normativo con informe detallado.</p>
+        <span class="s-tag">Auditorías</span>
+      </div>
+
+      <div class="serv-card" data-c="audit">
+        <div class="s-icon">🏭</div>
+        <h3>Inspecciones de Campo</h3>
+        <p>Relevamiento exhaustivo de instalaciones, equipos, herramientas y condiciones de trabajo. Identificación de riesgos y plan de acción correctivo priorizado.</p>
+        <span class="s-tag">Auditorías</span>
+      </div>
+
+      <div class="serv-card" data-c="audit">
+        <div class="s-icon">📊</div>
+        <h3>Análisis de Accidentología</h3>
+        <p>Investigación de accidentes e incidentes, análisis de causa raíz, estadísticas de siniestralidad y diseño de medidas preventivas para evitar recurrencia.</p>
+        <span class="s-tag">Auditorías</span>
+      </div>
+
+      <div class="serv-card" data-c="tech">
+        <div class="s-icon">📈</div>
+        <h3>Tableros Power BI</h3>
+        <p>Indicadores clave de seguridad (KPIs), visualización de riesgos por sector, tarea o turno, y reportes dinámicos para la toma de decisiones gerenciales.</p>
+        <span class="s-tag">Tecnología</span>
+      </div>
+
+      <div class="serv-card" data-c="tech">
+        <div class="s-icon">🔗</div>
+        <h3>Integración SAP</h3>
+        <p>Implementación de procesos de seguridad en sistemas SAP, gestión digital de incidentes y acciones correctivas, integración con sistemas empresariales.</p>
+        <span class="s-tag">Tecnología</span>
+      </div>
+
+      <div class="serv-card" data-c="tech">
+        <div class="s-icon">💻</div>
+        <h3>Digitalización &amp; Automatización</h3>
+        <p>Migración de documentación a sistemas digitales, automatización de reportes de seguridad y seguimiento de cumplimiento normativo mediante herramientas tecnológicas.</p>
+        <span class="s-tag">Tecnología</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── CONTACTO ── -->
+  <div class="panel" id="panel-contacto">
+    <p class="panel-label">Hablemos</p>
+    <h2 class="panel-title">Ponete en <span>contacto</span></h2>
+    <div class="gold-line"></div>
+
+    <div class="contact-wrap">
+      <!-- info -->
+      <div class="cinfo">
+        <a class="citem" href="tel:+5493446662925">
+          <div class="c-ico">📞</div>
+          <div class="c-body"><strong>Teléfono</strong><span>+54 9 3446 66-2925</span></div>
+        </a>
+        <a class="citem" href="mailto:sergurigh@gmail.com">
+          <div class="c-ico">📧</div>
+          <div class="c-body"><strong>Correo oficial</strong><span>sergurigh@gmail.com</span></div>
+        </a>
+        <a class="citem" href="mailto:rominacalvo26@gmail.com">
+          <div class="c-ico">✉️</div>
+          <div class="c-body"><strong>Correo personal</strong><span>rominacalvo26@gmail.com</span></div>
+        </a>
+
+        <div>
+          <p style="font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-bottom:.7rem">Redes sociales</p>
+          <div class="social-row">
+            <a href="https://wa.me/5493446662925" class="soc wa" target="_blank">💬 WhatsApp</a>
+            <a href="https://www.facebook.com/" class="soc fb" target="_blank">📘 Facebook</a>
+            <a href="https://www.instagram.com/" class="soc ig" target="_blank">📷 Instagram</a>
+            <a href="https://www.linkedin.com/" class="soc li" target="_blank">💼 LinkedIn</a>
+          </div>
+          <p style="font-size:.73rem;color:var(--gray);margin-top:.6rem">* Reemplazá los links con las URLs de tus perfiles reales.</p>
+        </div>
+      </div>
+
+      <!-- formulario -->
+      <div class="cform">
+        <div class="frow">
+          <div class="fg">
+            <label>Nombre completo *</label>
+            <input type="text" id="c-nombre" placeholder="Ej: Juan García"/>
+          </div>
+          <div class="fg">
+            <label>Correo electrónico *</label>
+            <input type="email" id="c-email" placeholder="tu@correo.com"/>
+          </div>
+        </div>
+        <div class="frow">
+          <div class="fg">
+            <label>Empresa / Organización</label>
+            <input type="text" id="c-empresa" placeholder="Nombre de tu empresa"/>
+          </div>
+          <div class="fg">
+            <label>Teléfono de contacto</label>
+            <input type="tel" id="c-tel" placeholder="+54 9 ..."/>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Servicio de interés</label>
+          <select id="c-servicio">
+            <option value="">Seleccioná una opción</option>
+            <option>Asesoramiento a Empresas</option>
+            <option>Auditorías e Inspecciones</option>
+            <option>Capacitaciones</option>
+            <option>Documentación Técnica</option>
+            <option>Planes de Emergencia</option>
+            <option>Salud y Seguridad (SST)</option>
+            <option>Tableros Power BI</option>
+            <option>Integración SAP</option>
+            <option>Digitalización de Registros</option>
+            <option>Tercerización HySL</option>
+            <option>Consulta general</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Consulta *</label>
+          <textarea id="c-consulta" rows="4" placeholder="Contame brevemente qué necesitás…"></textarea>
+        </div>
+
+        <button class="submit-btn" onclick="enviarFormulario()">
+          📩 Enviar consulta
+        </button>
+
+        <div class="success-msg" id="success-msg">
+          ✅ ¡Gracias por tu mensaje! Te responderemos a la brevedad a <strong>sergurigh@gmail.com</strong>
+        </div>
+
+        <p style="font-size:.77rem;color:var(--gray)">
+          Tu consulta se envía directamente a <strong style="color:var(--teal)">sergurigh@gmail.com</strong>. También podés escribirnos por WhatsApp para una respuesta más inmediata.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /panels-container -->
+
+<footer>
+  <p>© 2025 <strong>SERGURIGH</strong> – Servicio Integral de Seguridad e Higiene &nbsp;·&nbsp; Villa Paranacito, Entre Ríos &nbsp;·&nbsp; <a href="mailto:sergurigh@gmail.com">sergurigh@gmail.com</a></p>
+</footer>
+
+<!-- Floating WhatsApp -->
+<a class="wa-float" href="https://wa.me/5493446662925" target="_blank" title="Escribinos por WhatsApp">💬</a>
+
+<script>
+  /* ── TABS ── */
+  function openTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach((b,i) => {
+      const ids = ['quienes','misionvision','servicios','contacto'];
+      b.classList.toggle('active', ids[i] === tab);
+    });
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    const el = document.getElementById('panel-' + tab);
+    if(el) {
+      el.classList.add('active');
+      document.querySelector('.tabs-wrapper').scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  }
+
+  /* ── SERVICES FILTER ── */
+  function filterServ(cat, btn) {
+    document.querySelectorAll('.sf-btn').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    document.querySelectorAll('.serv-card').forEach(c => {
+      c.classList.toggle('hide', cat !== 'all' && c.dataset.c !== cat);
+    });
+  }
+
+  /* ── FORM → EMAIL via mailto ── */
+  function enviarFormulario() {
+    const nombre   = document.getElementById('c-nombre').value.trim();
+    const email    = document.getElementById('c-email').value.trim();
+    const empresa  = document.getElementById('c-empresa').value.trim();
+    const tel      = document.getElementById('c-tel').value.trim();
+    const servicio = document.getElementById('c-servicio').value;
+    const consulta = document.getElementById('c-consulta').value.trim();
+
+    if (!nombre || !email || !consulta) {
+      alert('Por favor completá los campos obligatorios: Nombre, Correo y Consulta.');
+      return;
+    }
+
+    const subject = encodeURIComponent('Consulta desde Sergurigh.com – ' + nombre);
+    const body = encodeURIComponent(
+      'Nombre: ' + nombre + '\n' +
+      'Email: ' + email + '\n' +
+      (empresa ? 'Empresa: ' + empresa + '\n' : '') +
+      (tel ? 'Teléfono: ' + tel + '\n' : '') +
+      (servicio ? 'Servicio de interés: ' + servicio + '\n' : '') +
+      '\nConsulta:\n' + consulta
+    );
+
+    // Abre cliente de correo con mailto
+    window.location.href = 'mailto:sergurigh@gmail.com?subject=' + subject + '&body=' + body;
+
+    // También ofrece envío por WhatsApp como alternativa
+    const waMsg = encodeURIComponent(
+      '👋 Hola Romina, te contacto desde tu web:\n\n' +
+      '👤 Nombre: ' + nombre + '\n' +
+      '📧 Email: ' + email +
+      (empresa ? '\n🏢 Empresa: ' + empresa : '') +
+      (servicio ? '\n🛡️ Servicio: ' + servicio : '') +
+      '\n\n💬 Consulta:\n' + consulta
+    );
+
+    // Mostrar mensaje de éxito
+    setTimeout(() => {
+      const msg = document.getElementById('success-msg');
+      msg.style.display = 'block';
+      // ofrecer WA alternativo
+      msg.innerHTML = '✅ ¡Se abrió tu cliente de correo! También podés <a href="https://wa.me/5493446662925?text=' + waMsg + '" target="_blank" style="color:var(--gold);font-weight:600">enviar por WhatsApp</a> si preferís.';
+    }, 500);
+  }
+</script>
+</body>
+</html>
