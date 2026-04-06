@@ -1,1 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SERGURIGH – Higiene y Seguridad</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root { --teal: #1e8a9a; --navy: #0b2d36; --gold: #d4a843; --cream: #f2ede6; --white: #fff; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--cream); line-height: 1.6; }
 
+    /* PORTADA (HERO) - Arreglada para móvil */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(rgba(11, 45, 54, 0.85), rgba(11, 45, 54, 0.85)), url('fondo.png');
+      background-size: cover;
+      background-position: center;
+    }
+    .hero-logo { width: 90px; border-radius: 50%; border: 2px solid var(--gold); margin-bottom: 15px; }
+    .hero h1 { font-family: 'Barlow Condensed', sans-serif; font-size: 3.5rem; font-weight: 900; line-height: 0.9; margin-bottom: 15px; }
+    .hero h1 span { color: var(--teal); }
+    .hero p { max-width: 320px; font-size: 1.1rem; margin-bottom: 30px; }
+
+    /* SECCIÓN PERFIL */
+    .profile-section { background: var(--white); color: var(--navy); padding: 60px 20px; text-align: center; }
+    .profile-img { width: 100%; max-width: 280px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); margin-bottom: 20px; }
+    .badge { background: var(--gold); color: var(--navy); display: inline-block; padding: 8px 20px; font-weight: 900; border-radius: 5px; font-family: 'Barlow Condensed'; font-size: 1.2rem; margin-top: -30px; position: relative; z-index: 10; }
+
+    /* INTERACCIONES: FILTROS DE SERVICIOS */
+    .filters { margin: 30px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    .filter-btn { border: 2px solid var(--teal); background: none; color: var(--teal); padding: 8px 15px; border-radius: 20px; font-weight: bold; cursor: pointer; }
+    .filter-btn.active { background: var(--teal); color: white; }
+    
+    .serv-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 1000px; margin: 0 auto; }
+    .card { background: var(--navy); color: white; padding: 25px; border-radius: 12px; text-align: left; transition: 0.3s; }
+    .card.hide { display: none; }
+    .card h3 { color: var(--gold); margin-bottom: 10px; font-family: 'Barlow Condensed'; font-size: 1.5rem; }
+
+    /* BOTONES */
+    .btn { display: inline-block; padding: 15px 30px; border-radius: 50px; font-weight: bold; text-decoration: none; text-transform: uppercase; transition: 0.3s; width: 100%; max-width: 280px; }
+    .btn-gold { background: var(--gold); color: var(--navy); margin-bottom: 15px; }
+    
+    .wa-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.4); z-index: 1000; }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <img src="logo.jpg" alt="Logo" class="hero-logo">
+    <h1>SERGU<span>RIGH</span></h1>
+    <p>Innovación y cumplimiento normativo para la industria.</p>
+    <a href="#servicios" class="btn btn-gold">VER SERVICIOS</a>
+  </section>
+
+  <section class="profile-section" id="perfil">
+    <img src="romina.png" alt="Lic. Romina Calvo" class="profile-img">
+    <div class="badge">LIC. HIGIENE Y SEGURIDAD</div>
+    <div style="margin-top:20px">
+      <h2 style="font-family:'Barlow Condensed'; font-size: 2.5rem; color: var(--teal);">Gestión Profesional</h2>
+      <p style="padding: 0 10px; color: #444;">Bajo la dirección de la <strong>Lic. Romina Juliana Calvo (UTN)</strong>, integramos tecnología y seguridad en Zárate y la región.</p>
+    </div>
+
+    <div class="filters" id="servicios">
+      <button class="filter-btn active" onclick="filter('all')">Todos</button>
+      <button class="filter-btn" onclick="filter('ind')">Industrial</button>
+      <button class="filter-btn" onclick="filter('const')">Construcción</button>
+    </div>
+
+    <div class="serv-grid">
+      <div class="card" data-cat="ind"><h3>Capacitaciones</h3><p>Formación técnica en EPP y riesgos específicos.</p></div>
+      <div class="card" data-cat="const"><h3>Legajos Técnicos</h3><p>Gestión completa de seguridad para obras.</p></div>
+      <div class="card" data-cat="ind"><h3>Auditorías</h3><p>Control de cumplimiento normativo y ambiental.</p></div>
+    </div>
+  </section>
+
+  <a href="https://wa.me/tu-numero-aqui" class="wa-float">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35" alt="WhatsApp">
+  </a>
+
+  <script>
+    function filter(cat) {
+      const cards = document.querySelectorAll('.card');
+      const btns = document.querySelectorAll('.filter-btn');
+      btns.forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+      cards.forEach(c => {
+        if(cat === 'all' || c.dataset.cat === cat) c.classList.remove('hide');
+        else c.classList.add('hide');
+      });
+    }
+  </script>
+
+</body>
+</html>
