@@ -1,1 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SERGURIGH – Lic. Romina Juliana Calvo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --teal: #1e8a9a;
+      --navy: #0b2d36;
+      --gold: #d4a843;
+      --cream: #f2ede6;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background-color: var(--navy); color: var(--white); line-height: 1.6; }
+
+    /* --- NAVEGACIÓN --- */
+    nav { background: rgba(11, 45, 54, 0.95); position: fixed; width: 100%; top: 0; z-index: 1000; padding: 1rem; text-align: center; border-bottom: 1px solid var(--teal); }
+    nav a { color: var(--white); text-decoration: none; margin: 0 15px; font-family: 'Barlow Condensed'; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 1.1rem; }
+    nav a:hover { color: var(--gold); }
+
+    /* --- HERO SECTION --- */
+    .hero { 
+      height: 100vh; 
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+      background: linear-gradient(rgba(11, 45, 54, 0.8), rgba(11, 45, 54, 0.8)), url('fondo.png') center/cover no-repeat;
+      padding: 0 2rem;
+    }
+    .hero-logo { width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--gold); margin-bottom: 2rem; object-fit: cover; }
+    .hero h1 { font-family: 'Barlow Condensed'; font-size: clamp(3.5rem, 10vw, 6rem); font-weight: 900; line-height: 0.9; margin-bottom: 1rem; }
+    .hero h1 span { color: var(--teal); }
+    .hero p { font-size: 1.2rem; max-width: 600px; margin-bottom: 2rem; color: var(--cream); }
+
+    /* --- QUIEN SOY --- */
+    .about { background: var(--white); color: var(--navy); padding: 6rem 1.5rem; }
+    .container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; align-items: center; }
+    .about-img-box { position: relative; text-align: center; }
+    .about-img { width: 100%; max-width: 400px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+    .about-badge { position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--navy); padding: 10px 30px; border-radius: 5px; font-family: 'Barlow Condensed'; font-weight: 900; font-size: 1.4rem; }
+    .about-text h2 { font-family: 'Barlow Condensed'; font-size: 3rem; color: var(--teal); margin-bottom: 1.5rem; text-transform: uppercase; }
+
+    /* --- SERVICIOS (PESTAÑAS/FILTROS) --- */
+    .services { padding: 6rem 1.5rem; background: var(--cream); color: var(--navy); text-align: center; }
+    .filter-btns { margin-bottom: 3rem; }
+    .f-btn { background: transparent; border: 2px solid var(--teal); color: var(--teal); padding: 10px 25px; border-radius: 50px; font-weight: 700; cursor: pointer; margin: 5px; transition: 0.3s; font-family: 'Barlow Condensed'; font-size: 1.2rem; }
+    .f-btn.active, .f-btn:hover { background: var(--teal); color: var(--white); }
+    
+    .serv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; }
+    .serv-card { background: var(--white); padding: 2.5rem; border-radius: 15px; border-top: 5px solid var(--teal); box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: left; transition: 0.3s; }
+    .serv-card:hover { transform: translateY(-10px); }
+    .serv-card h3 { color: var(--navy); font-family: 'Barlow Condensed'; font-size: 1.8rem; margin-bottom: 1rem; }
+    .serv-card.hide { display: none; }
+
+    /* --- CONTACTO --- */
+    .contact { padding: 6rem 1.5rem; background: var(--navy); }
+    .contact-box { max-width: 600px; margin: 0 auto; background: var(--white); padding: 3rem; border-radius: 20px; color: var(--navy); }
+    .contact-box h2 { font-family: 'Barlow Condensed'; font-size: 2.5rem; text-align: center; margin-bottom: 2rem; color: var(--teal); }
+    input, select, textarea { width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 10px; font-family: inherit; }
+    .btn-submit { background: var(--teal); color: var(--white); border: none; padding: 1.2rem; width: 100%; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 1.1rem; text-transform: uppercase; transition: 0.3s; }
+    .btn-submit:hover { background: var(--gold); color: var(--navy); }
+
+    /* --- WHATSAPP --- */
+    .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.3); z-index: 1000; }
+
+    @media (max-width: 768px) {
+      nav { padding: 0.8rem; }
+      nav a { margin: 0 8px; font-size: 0.9rem; }
+      .hero h1 { font-size: 3.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#quien-soy">Quién Soy</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <section class="hero" id="inicio">
+    <img src="logo.jpg" alt="Logo" class="hero-logo">
+    <h1>SERGU<span>RIGH</span></h1>
+    <p>Servicio Profesional de Seguridad e Higiene. Innovación y compromiso en la prevención de riesgos laborales.</p>
+    <a href="#contacto" style="background:var(--gold); color:var(--navy); padding:1rem 2rem; border-radius:50px; text-decoration:none; font-weight:900; font-family:'Barlow Condensed';">CONSULTAR AHORA</a>
+  </section>
+
+  <section class="about" id="quien-soy">
+    <div class="container">
+      <div class="about-img-box">
+        <img src="romina.png" alt="Lic. Romina Calvo" class="about-img">
+        <span class="about-badge">LICENCIADA EN H&S</span>
+      </div>
+      <div class="about-text">
+        <h2>Lic. Romina Juliana Calvo</h2>
+        <p>Egresada de la <strong>Universidad Tecnológica Nacional (UTN)</strong>, me especializo en la gestión integral de riesgos laborales. Mi enfoque combina la normativa vigente con la innovación tecnológica para crear entornos de trabajo seguros.</p>
+        <p style="margin-top:1rem">Brindo soluciones personalizadas en la ciudad de Zárate y alrededores, acompañando a empresas y profesionales en el cumplimiento legal y la mejora continua.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="servicios">
+    <h2 style="font-family:'Barlow Condensed'; font-size:3rem; margin-bottom:2rem;">MIS SERVICIOS</h2>
+    <div class="filter-btns">
+      <button class="f-btn active" onclick="filtrar('todos')">Todos</button>
+      <button class="f-btn" onclick="filtrar('industrial')">Industrial</button>
+      <button class="f-btn" onclick="filtrar('construccion')">Construcción</button>
+    </div>
+
+    <div class="serv-grid">
+      <div class="serv-card" data-cat="industrial">
+        <h3>Higiene Industrial</h3>
+        <p>Mediciones de ruido, iluminación y contaminantes ambientales según normativa.</p>
+      </div>
+      <div class="serv-card" data-cat="construccion">
+        <h3>Legajos de Obra</h3>
+        <p>Gestión completa de seguridad en proyectos de construcción y seguimiento técnico.</p>
+      </div>
+      <div class="serv-card" data-cat="industrial">
+        <h3>Capacitaciones</h3>
+        <p>Entrenamientos específicos y formación continua para el personal operativo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contacto">
+    <div class="contact-box">
+      <h2>CONTACTO</h2>
+      <input type="text" id="nombre" placeholder="Nombre completo">
+      <input type="email" id="email" placeholder="Correo electrónico">
+      <select id="servicio">
+        <option value="General">Motivo de consulta</option>
+        <option value="Industrial">Higiene Industrial</option>
+        <option value="Construcción">Construcción</option>
+      </select>
+      <textarea id="consulta" rows="5" placeholder="Escribí tu mensaje aquí..."></textarea>
+      <button class="btn-submit" onclick="enviarMail()">Enviar Mensaje</button>
+      <p style="margin-top:1.5rem; font-size:0.9rem; text-align:center;">Email: <strong>sergurigh@gmail.com</strong></p>
+    </div>
+  </section>
+
+  <a href="https://wa.me/5493487123456" class="wa-float" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35" alt="WhatsApp">
+  </a>
+
+  <script>
+    function filtrar(cat) {
+      const btns = document.querySelectorAll('.f-btn');
+      btns.forEach(b => b.classList.toggle('active', b.innerText.toLowerCase().includes(cat) || (cat==='todos' && b.innerText==='Todos')));
+      
+      const cards = document.querySelectorAll('.serv-card');
+      cards.forEach(c => {
+        c.style.display = (cat === 'todos' || c.dataset.cat === cat) ? 'block' : 'none';
+      });
+    }
+
+    function enviarMail() {
+      const nom = document.getElementById('nombre').value;
+      const msg = document.getElementById('consulta').value;
+      if(!nom || !msg) { alert('Por favor, completá nombre y mensaje.'); return; }
+      window.location.href = `mailto:sergurigh@gmail.com?subject=Consulta de ${nom}&body=${msg}`;
+    }
+  </script>
+
+</body>
+</html>
 
