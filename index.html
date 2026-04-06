@@ -1,1 +1,113 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SERGURIGH | Romina Juliana Calvo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --teal: #1e8a9a; --navy: #0b2d36; --gold: #d4a843; --white: #ffffff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; }
+
+        /* NAVEGACIÓN Y LOGO IZQUIERDA */
+        nav { 
+            position: fixed; width: 100%; top: 0; z-index: 1000; 
+            padding: 15px 5%; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(11, 45, 54, 0.95); backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--teal);
+        }
+        .nav-brand { display: flex; align-items: center; gap: 15px; }
+        .nav-logo { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--gold); }
+        .nav-links a { color: white; text-decoration: none; margin-left: 20px; font-family: 'Barlow Condensed'; text-transform: uppercase; font-weight: 700; font-size: 0.9rem; }
+
+        /* SECCIÓN HERO - PANTALLA COMPLETA */
+        .hero { 
+            height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center;
+            background: linear-gradient(rgba(11, 45, 54, 0.7), rgba(11, 45, 54, 0.7)), url('fondo.png') center/cover no-repeat;
+            padding: 0 5%;
+        }
+        .hero-content h1 { font-family: 'Barlow Condensed'; font-size: clamp(3.5rem, 12vw, 7rem); line-height: 0.8; font-weight: 900; letter-spacing: -2px; }
+        .hero-content h1 span { color: var(--teal); }
+        .hero-content p { font-size: clamp(1rem, 4vw, 1.5rem); color: var(--gold); margin-top: 20px; text-transform: uppercase; font-weight: 700; }
+
+        /* SECCIÓN SOBRE MÍ - INTEGRACIÓN DE DATOS REALES */
+        .about { display: grid; grid-template-columns: 1fr 1fr; align-items: center; min-height: 100vh; background: var(--white); color: var(--navy); }
+        .about-img { width: 100%; height: 100%; object-fit: cover; }
+        .about-text { padding: 10% 15%; }
+        .about-text h2 { font-family: 'Barlow Condensed'; font-size: 3.5rem; color: var(--teal); margin-bottom: 20px; line-height: 1; }
+        .matriculas { margin-bottom: 25px; font-weight: 700; color: var(--navy); }
+
+        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 30px; }
+        .skill-box { background: #f0f4f5; padding: 15px; border-radius: 5px; border-left: 4px solid var(--gold); font-size: 0.85rem; font-weight: 700; }
+
+        /* SERVICIOS COMPACTOS */
+        .services { padding: 100px 8%; background: #e9ecef; color: var(--navy); }
+        .service-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .s-card { background: var(--white); padding: 30px; border-radius: 15px; border-bottom: 5px solid var(--teal); }
+        .s-card h3 { font-family: 'Barlow Condensed'; font-size: 1.8rem; margin-bottom: 10px; color: var(--navy); }
+
+        /* WHATSAPP SIEMPRE VISIBLE */
+        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+
+        @media (max-width: 768px) {
+            .about { grid-template-columns: 1fr; }
+            .about-img { height: 400px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-brand">
+            <img src="logo.jpg" alt="SERGURIGH" class="nav-logo">
+            <span style="font-family: 'Barlow Condensed'; font-weight: 900; font-size: 1.4rem;">SERGURIGH</span>
+        </div>
+        <div class="nav-links">
+            <a href="#inicio">Inicio</a>
+            <a href="#perfil">Perfil</a>
+            <a href="#servicios">Servicios</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>SERGU<span>RIGH</span></h1>
+            <p>Consultoría en Higiene y Seguridad Laboral</p>
+        </div>
+    </section>
+
+    <section class="about" id="perfil">
+        <img src="romina.png" alt="Lic. Romina Calvo" class="about-img">
+        <div class="about-text">
+            <h2>Romina Juliana Calvo</h2>
+            <p class="matriculas">Matrícula Buenos Aires: THS 008932<br>Matrícula Entre Ríos: TH 0076</p>
+            <p>Técnica Universitaria (UTN) especializada en la digitalización de procesos preventivos y gestión de riesgos industriales.</p>
+            
+            <div class="skills-grid">
+                <div class="skill-box">SAP Professional</div>
+                <div class="skill-box">Power BI Masterclass</div>
+                <div class="skill-box">SGA / Químicos</div>
+                <div class="skill-box">Sistemas de Gestión SST</div>
+                <div class="skill-box">Diseño Gráfico Digital</div>
+                <div class="skill-box">Auditorías de Campo</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="servicios">
+        <div class="service-list">
+            <div class="s-card"><h3>Higiene</h3><p>Mediciones de ruido, contaminantes y protocolos de ergonomía.</p></div>
+            <div class="s-card"><h3>Seguridad</h3><p>Capacitaciones en altura (Res. 63/2023) y control de incendios.</p></div>
+            <div class="s-card"><h3>Tecnología</h3><p>Implementación de tableros Power BI e integración con SAP.</p></div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/5493446662925" class="wa-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35" alt="WhatsApp">
+    </a>
+
+</body>
+</html>
