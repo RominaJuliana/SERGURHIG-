@@ -3,37 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SERGURIGH – Seguridad e Higiene</title>
+<title>SERGURIGH PRO – Sistema de Seguridad e Higiene</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<!-- Enlace a Font Awesome para los iconos de redes sociales -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 <style>
 :root{
 --teal:#1e8a9a;
 --navy:#0b2d36;
 --gold:#d4a843;
---cream:#f2ede6;
---white:#fff;
 --gray:#9ab4bc;
+--white:#fff;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
+
 body{
 font-family:'DM Sans',sans-serif;
 background:var(--navy);
-color:var(--cream);
+color:var(--white);
 }
 
 /* HERO */
 .hero{
 min-height:100vh;
 display:flex;
-flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
+flex-direction:column;
 position:relative;
 }
 
@@ -41,55 +39,30 @@ position:relative;
 content:"";
 position:absolute;
 inset:0;
-background:url("fondo.jpeg") center/cover no-repeat;
-opacity:.25;
+background:url("fondo.jpeg") center/cover;
+opacity:.2;
 }
 
-.hero-content{
-position:relative;
-z-index:2;
-}
-
-.hero img{
-width:130px;
-border-radius:50%;
-margin-bottom:20px;
-}
+.hero-content{z-index:2;}
 
 h1{
-font-family:'Barlow Condensed',sans-serif;
+font-family:'Barlow Condensed';
 font-size:4rem;
 }
 
 h1 span{color:var(--teal);}
 
-.subtitle{
-color:var(--gray);
-margin-top:10px;
-}
-
 .btn{
-margin-top:20px;
-display:inline-block;
-padding:10px 20px;
+padding:10px 18px;
 border-radius:30px;
-text-decoration:none;
-cursor:pointer;
-}
-
-.btn-main{
-background:var(--gold);
-color:var(--navy);
-font-weight:600;
 border:none;
-font-family:'DM Sans',sans-serif;
+cursor:pointer;
+margin:5px;
 font-size:1rem;
 }
 
-.btn-outline{
-border:1px solid var(--teal);
-color:var(--teal);
-}
+.btn-main{background:var(--gold);color:#000;}
+.btn-outline{border:1px solid var(--teal);color:var(--teal);background:none;}
 
 /* NAV */
 nav{
@@ -98,9 +71,9 @@ top:0;
 background:#0b2d36ee;
 display:flex;
 justify-content:center;
-gap:20px;
-padding:15px;
-z-index:100;
+gap:15px;
+padding:12px;
+z-index:10;
 }
 
 nav button{
@@ -108,19 +81,16 @@ background:none;
 border:none;
 color:var(--gray);
 cursor:pointer;
-font-family:'DM Sans',sans-serif;
 font-size:1rem;
 }
 
-nav button.active{
-color:#fff;
-}
+nav button.active{color:#fff;}
 
 /* SECCIONES */
 .section{
 display:none;
-padding:50px 20px;
-max-width:900px;
+padding:40px 20px;
+max-width:1000px;
 margin:auto;
 }
 
@@ -130,97 +100,28 @@ margin:auto;
 background:#ffffff10;
 padding:20px;
 border-radius:15px;
-margin-top:20px;
+margin-top:15px;
 }
 
-/* GRID */
 .grid{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:20px;
 }
 
-img.profile{
-width:100%;
-border-radius:15px;
-}
-
-/* Estilos para los iconos de redes sociales */
-.social-icon {
-    font-size: 1.5rem; /* Ajusta el tamaño de los iconos */
-    margin-left: 8px; /* Espacio entre los iconos */
-    color: var(--teal); /* Color de los iconos */
-    transition: color 0.3s ease; /* Transición suave al pasar el mouse */
-}
-
-.social-icon:hover {
-    color: var(--gold); /* Cambia el color al pasar el mouse */
-}
-
-/* CONTACTO */
-input,textarea{
+.search{
 width:100%;
 padding:10px;
+border-radius:10px;
+border:none;
 margin-top:10px;
-border-radius:8px;
-border:none;
-background:#ffffff15;
-color:var(--cream);
-font-family:'DM Sans',sans-serif;
-font-size:1rem;
 }
 
-input::placeholder,textarea::placeholder{
-color:var(--gray);
-}
+a{color:var(--teal);}
 
-textarea{
-min-height:120px;
-resize:vertical;
-}
-
-/* Botones contacto */
-.contact-buttons{
-display:flex;
-gap:12px;
-margin-top:15px;
-flex-wrap:wrap;
-}
-
-.btn-whatsapp{
-background:#25D366;
-color:#fff;
-font-weight:600;
-border:none;
-font-family:'DM Sans',sans-serif;
-font-size:1rem;
-padding:10px 20px;
-border-radius:30px;
-cursor:pointer;
-text-decoration:none;
-display:inline-block;
-}
-
-/* Mensaje de éxito */
-.success-msg{
-display:none;
-background:#1e8a9a22;
-border:1px solid var(--teal);
-color:var(--teal);
-padding:12px 16px;
-border-radius:8px;
-margin-top:12px;
-}
-
-footer{
-text-align:center;
-padding:20px;
-color:var(--gray);
-}
-
-@media(max-width:600px){
-.grid{grid-template-columns:1fr;}
-h1{font-size:2.8rem;}
+hr{
+opacity:0.2;
+margin:10px 0;
 }
 </style>
 </head>
@@ -230,253 +131,122 @@ h1{font-size:2.8rem;}
 <!-- HERO -->
 <section class="hero">
 <div class="hero-content">
-<img src="logo.jpeg" alt="Logo SERGURIGH">
 <h1>SERGU<span>RIGH</span></h1>
-<p class="subtitle">Servicio Integral de Seguridad e Higiene</p>
-<p>Disponibilidad en todo el país</p>
+<p>Seguridad e Higiene Profesional</p>
 
-<a class="btn btn-main" onclick="openTab('servicios', this)">Ver Servicios</a>
-<a class="btn btn-outline" onclick="openTab('contacto', this)">Contacto</a>
+<button class="btn btn-main" onclick="openTab('servicios',this)">Servicios</button>
+<button class="btn btn-outline" onclick="openTab('normativa',this)">Normativa</button>
 </div>
 </section>
 
 <!-- NAV -->
 <nav>
-<button class="active" onclick="openTab('quienes', this)">Quiénes</button>
-<button onclick="openTab('mision', this)">Misión</button>
-    <button onclick="openTab('normativa', this)">Normativa</button>
-<button onclick="openTab('servicios', this)">Servicios</button>
-<button onclick="openTab('contacto', this)">Contacto</button>
+<button class="active" onclick="openTab('quienes',this)">Quiénes</button>
+<button onclick="openTab('mision',this)">Misión</button>
+<button onclick="openTab('normativa',this)">Normativa</button>
+<button onclick="openTab('servicios',this)">Servicios</button>
+<button onclick="openTab('contacto',this)">Contacto</button>
 </nav>
 
 <!-- QUIENES -->
 <div id="quienes" class="section active">
-<h2>Quiénes Somos</h2>
-
-<div class="grid">
-<div>
-<img src="perfil.jpeg" class="profile" alt="Perfil">
-</div>
-
 <div class="card">
-<p><strong>Sergurigh</strong> — Soy Licenciada en Higiene y Seguridad, con un enfoque profesional orientado a la prevención de riesgos laborales y la mejora continua de las condiciones de trabajo en distintos entornos productivos. Mi objetivo es brindar servicios integrales que no solo cumplan con la normativa vigente, sino que también reduzcan la brecha entre lo establecido en la teoría y lo que ocurre en la práctica diaria dentro de las organizaciones.
-
-Me destaco por una visión innovadora que busca integrar nuevas tecnologías aplicadas a la gestión de la seguridad e higiene, incorporando herramientas digitales que optimicen el análisis de riesgos, la toma de decisiones y el seguimiento de indicadores preventivos. Considero que la digitalización, el uso de datos y la automatización de procesos son fundamentales para elevar los estándares de seguridad en las empresas.
-
-Trabajo con un enfoque estratégico, adaptado a cada rubro, promoviendo una cultura preventiva sostenible que priorice la salud de las personas y la eficiencia operativa. Mi compromiso es acompañar a las organizaciones en su evolución hacia entornos laborales más seguros, modernos y tecnológicamente integrados.</p>
-
-<!-- Aquí se añaden los enlaces a tus redes sociales -->
-<p style="margin-top: 15px;">
-    Romina Juliana Calvo 
-    <a href="https://www.facebook.com/share/1BVyJVUwN3/" target="_blank" aria-label="Facebook">
-        <i class="fab fa-facebook-square social-icon"></i>
-    </a>
-    <a href="https://www.linkedin.com/in/romina-juliana-calvo-6a111a2a2" target="_blank" aria-label="LinkedIn">
-        <i class="fab fa-linkedin social-icon"></i>
-    </a>
-    <a href="https://www.instagram.com/rominajulianacalvo" target="_blank" aria-label="Instagram">
-        <i class="fab fa-instagram-square social-icon"></i>
-    </a>
-</p>
-</div>
+<h2>Quiénes Somos</h2>
+<p>Consultoría en Seguridad e Higiene con enfoque moderno y digital aplicado a la prevención de riesgos laborales.</p>
 </div>
 </div>
 
 <!-- MISION -->
 <div id="mision" class="section">
-<h2>Misión & Visión</h2>
-
 <div class="grid">
+
 <div class="card">
 <h3>Misión</h3>
-<p>Brindar soluciones integrales que garanticen ambientes laborales seguros, cumpliendo normativa vigente y mejorando la calidad de trabajo.</p>
+<p>Prevenir riesgos laborales mediante soluciones técnicas, normativas y digitales.</p>
 </div>
-    <!-- NORMATIVA -->
-<div id="normativa" class="section">
-<h2>Normativa vigente y organismos de referencia</h2>
-
-<div class="card">
-<p>
-Nuestra actividad en Seguridad e Higiene se basa en la normativa vigente en la República Argentina,
-garantizando el cumplimiento de la legislación laboral y la prevención de riesgos en los ambientes de trabajo.
-</p>
-</div>
-
-<div class="grid">
-
-<div class="card">
-<h3>⚖️ Marco legal</h3>
-<ul style="margin-left:20px;">
-<li>Ley 19.587 – Higiene y Seguridad en el Trabajo</li>
-<li>Ley 24.557 – Riesgos del Trabajo</li>
-<li>Decreto 351/79</li>
-<li>Resoluciones de la SRT</li>
-</ul>
-</div>
-
-<div class="card">
-<h3>🏛️ Organismos oficiales</h3>
-
-<p>
-<strong>Superintendencia de Riesgos del Trabajo (SRT)</strong><br>
-<a href="https://www.argentina.gob.ar/srt" target="_blank" style="color:var(--teal);">
-Ir al sitio oficial
-</a>
-</p>
-
-<br>
-
-<p>
-<strong>INFOLEG</strong><br>
-<a href="http://www.infoleg.gob.ar" target="_blank" style="color:var(--teal);">
-Consultar normativa
-</a>
-</p>
-
-</div>
-
-</div>
-
-<div class="card">
-<p style="color:var(--gray); font-size:0.9rem;">
-Fuente: normativa oficial del Estado Nacional argentino.
-Esta web no representa organismos gubernamentales.
-</p>
-</div>
-
-</div> <!-- ESTE ES EL CIERRE DE NORMATIVA -->
 
 <div class="card">
 <h3>Visión</h3>
-<p>Ser referente nacional en seguridad laboral integrando innovación, tecnología y análisis de datos.</p>
+<p>Ser referentes en seguridad laboral integrando tecnología y gestión preventiva.</p>
 </div>
+
+</div>
+</div>
+
+<!-- NORMATIVA -->
+<div id="normativa" class="section">
+
+<h2>Normativa Argentina</h2>
+
+<div class="card">
+<p>Buscador interno de normativa:</p>
+<input class="search" id="buscador" placeholder="Ej: Ley 19587, Decreto 351, SRT..." onkeyup="filtrar()">
+</div>
+
+<div class="card" id="listaNormas">
+
+<p><strong>Ley 19.587</strong> – Higiene y Seguridad</p>
+<a href="https://www.argentina.gob.ar/normativa/nacional/ley-19587" target="_blank">Ver fuente oficial</a>
+
+<hr>
+
+<p><strong>Ley 24.557</strong> – Riesgos del Trabajo</p>
+<a href="https://www.argentina.gob.ar/normativa/nacional/ley-24557" target="_blank">Ver fuente oficial</a>
+
+<hr>
+
+<p><strong>Decreto 351/79</strong></p>
+<a href="https://www.argentina.gob.ar/normativa" target="_blank">Consultar normativa</a>
+
+<hr>
+
+<p><strong>SRT</strong></p>
+<a href="https://www.argentina.gob.ar/srt" target="_blank">Superintendencia de Riesgos del Trabajo</a>
+
 </div>
 </div>
 
 <!-- SERVICIOS -->
 <div id="servicios" class="section">
+<div class="card">
 <h2>Servicios</h2>
-
-<div class="card">
-<h3>Asesoramiento en Seguridad e Higiene</h3>
-<p>Brindamos un acompañamiento integral en la gestión de Seguridad e Higiene laboral, analizando cada entorno de trabajo para identificar oportunidades de mejora. Nuestro enfoque busca reducir la brecha entre la normativa vigente y su aplicación real, integrando soluciones prácticas, preventivas e innovadoras adaptadas a cada organización.</p>
-</div>
-
-<div class="card">
-<h3>Auditorías e inspecciones técnicas</h3>
-<p>Realizamos relevamientos completos en campo para evaluar el cumplimiento normativo, las condiciones de seguridad y la efectividad de las medidas preventivas implementadas. A partir de cada auditoría se elaboran informes detallados con hallazgos, recomendaciones y planes de acción concretos.</p>
-</div>
-
-<div class="card">
-<h3>Power BI aplicado a Seguridad e Higiene</h3>
-<p>Implementamos herramientas de análisis de datos como Power BI para transformar información de seguridad en indicadores claros y visuales. Esto permite mejorar la toma de decisiones, anticipar riesgos y optimizar la gestión preventiva mediante reportes dinámicos y seguimiento continuo.</p>
-</div>
-
-<div class="card">
-<h3>Gestión de riesgos continua</h3>
-<p>Desarrollamos un sistema de detección, seguimiento y control permanente de riesgos laborales, permitiendo una gestión proactiva de la seguridad. Este enfoque asegura la identificación temprana de peligros y la implementación de medidas preventivas sostenibles en el tiempo.</p>
+<p>Auditorías, asesoramiento, gestión de riesgos y análisis de seguridad e higiene.</p>
 </div>
 </div>
 
-<!-- CONTACTO — ahora fuera de servicios ✅ -->
+<!-- CONTACTO -->
 <div id="contacto" class="section">
-<h2>Contacto</h2>
-
 <div class="card">
+<h2>Contacto</h2>
 <p>📧 sergurigh@gmail.com</p>
 <p>📞 +54 9 3446 66-2925</p>
 </div>
-
-<div class="card">
-<p style="margin-bottom:5px;color:var(--gray);font-size:0.9rem;">Completá el formulario y te respondo a la brevedad:</p>
-
-<input type="text" id="nombre" placeholder="Tu nombre">
-<input type="email" id="email" placeholder="Tu email">
-<textarea id="consulta" placeholder="Tu consulta"></textarea>
-
-<div class="contact-buttons">
-  <!-- Botón enviar por email via Formspree -->
-  <button class="btn btn-main" onclick="enviarFormulario()">✉️ Enviar por Email</button>
-
-  <!-- Botón WhatsApp -->
-  <button class="btn btn-whatsapp" onclick="enviarWhatsApp()">💬 Enviar por WhatsApp</button>
 </div>
-
-<div class="success-msg" id="successMsg">
-  ✅ ¡Mensaje enviado! Te respondo a la brevedad.
-</div>
-</div>
-</div>
-
-<footer>
-© 2026 SERGURIGH – Seguridad e Higiene
-</footer>
 
 <script>
-// Navegación entre secciones
-function openTab(id, el){
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
 
-  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
-  // Si el elemento clickeado es un botón de nav, lo marcamos como activo
-  if(el && el.tagName === 'BUTTON') el.classList.add('active');
+/* navegación */
+function openTab(id,btn){
+document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+document.getElementById(id).classList.add('active');
 
-  // Scroll suave hacia la sección
-  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+if(btn) btn.classList.add('active');
+
+document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
 
-// Enviar por WhatsApp
-function enviarWhatsApp(){
-  const nombre = document.getElementById('nombre').value.trim();
-  const consulta = document.getElementById('consulta').value.trim();
+/* buscador normativa */
+function filtrar(){
+let input=document.getElementById("buscador").value.toLowerCase();
+let items=document.querySelectorAll("#listaNormas p");
 
-  if(!nombre || !consulta){
-    alert('Por favor completá tu nombre y consulta.');
-    return;
-  }
-
-  const texto = encodeURIComponent(`Hola! Soy ${nombre}.\n\n${consulta}`);
-  window.open(`https://wa.me/5493446662925?text=${texto}`, '_blank');
+items.forEach(el=>{
+el.style.display=el.textContent.toLowerCase().includes(input)?"block":"none";
+});
 }
 
-// Enviar por Email via Formspree
-async function enviarFormulario(){
-  const nombre = document.getElementById('nombre').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const consulta = document.getElementById('consulta').value.trim();
-
-  if(!nombre || !email || !consulta){
-    alert('Por favor completá todos los campos.');
-    return;
-  }
-
-  // IMPORTANTE: Reemplazá "TU_ID_FORMSPREE" con tu ID de Formspree
-  // Registrate gratis en https://formspree.io y creá un formulario
-  // Te van a dar un endpoint como: https://formspree.io/f/xabcdefg
-  const FORMSPREE_URL = 'https://formspree.io/f/TU_ID_FORMSPREE';
-
-  try {
-    const res = await fetch(FORMSPREE_URL, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ nombre, email, message: consulta })
-    });
-
-    if(res.ok){
-      document.getElementById('successMsg').style.display = 'block';
-      document.getElementById('nombre').value = '';
-      document.getElementById('email').value = '';
-      document.getElementById('consulta').value = '';
-    } else {
-      alert('Hubo un error al enviar. Intentá por WhatsApp.');
-    }
-  } catch(e) {
-    alert('Hubo un error al enviar. Intentá por WhatsApp.');
-  }
-}
 </script>
 
 </body>
-  </html>
-  
+</html>
